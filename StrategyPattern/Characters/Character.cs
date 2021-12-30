@@ -1,19 +1,28 @@
 ﻿using Microsoft.Extensions.Logging;
+using StrategyPattern.Weapons;
 
 namespace StrategyPattern.Characters
 {
     public abstract class Character
     {
-        protected ILogger<Character> _logger;
-        protected Character(ILogger<Character> logger)
+        private IWeapon _weapon;
+
+        private ILogger<Character> _logger;
+        protected Character(ILogger<Character> logger, IWeapon weapon)
         {
             _logger = logger;
+            _weapon = weapon;
         }
 
         public int Fight()
         {
             _logger.LogInformation("fighting");
-            return 1;
+            return _weapon.UseWeapon();
+        }
+
+        public void SetWeapon(IWeapon weapon)
+        {
+            _weapon = weapon ?? new Fists();
         }
     }
 }
