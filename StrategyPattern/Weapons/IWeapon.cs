@@ -2,6 +2,7 @@
 {
     public interface IWeapon
     {
-        public int UseWeapon();
+        public (int range, int damage) UseWeapon();
+        public string WeaponName { get; }
     }
 }

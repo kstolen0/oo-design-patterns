@@ -11,10 +11,10 @@ namespace StrategyPattern.Characters
         protected Character(ILogger<Character> logger, IWeapon weapon)
         {
             _logger = logger;
-            _weapon = weapon;
+            _weapon = weapon ?? new Fists();
         }
 
-        public int Fight()
+        public (int range, int damage) Fight()
         {
             _logger.LogInformation("fighting");
             return _weapon.UseWeapon();
@@ -23,6 +23,11 @@ namespace StrategyPattern.Characters
         public void SetWeapon(IWeapon weapon)
         {
             _weapon = weapon ?? new Fists();
+        }
+
+        public string GetCurrentWeapon()
+        {
+            return _weapon.WeaponName;
         }
     }
 }

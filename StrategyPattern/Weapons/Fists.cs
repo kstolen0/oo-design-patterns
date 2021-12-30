@@ -2,9 +2,11 @@
 {
     public class Fists : IWeapon
     {
-        public int UseWeapon()
+        public string WeaponName => nameof(Fists);
+
+        (int range, int damage) IWeapon.UseWeapon()
         {
-            return 1;
+            return (range: 1, damage: 1);
         }
     }
 }

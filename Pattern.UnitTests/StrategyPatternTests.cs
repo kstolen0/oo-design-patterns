@@ -12,45 +12,52 @@ namespace UnitTests
         Mock<ILogger<Character>> loggerMock = new Mock<ILogger<Character>>();
 
         [Fact]
-        public void King_UnarmedAttack_DealsOneDamage()
+        public void King_Default_FightsWithFists()
         {
             Character sut = new King(loggerMock.Object);
 
-            var result = sut.Fight();
-
-            result.Should().Be(1);
+            sut.GetCurrentWeapon().Should().BeEquivalentTo(nameof(Fists));
         }
 
         [Fact]
-        public void Queen_UnarmedAttack_DealsOneDamage()
+        public void Queen_Default_FightsWithFists()
         {
             Character sut = new Queen(loggerMock.Object);
 
             var result = sut.Fight();
 
-            result.Should().Be(1);
+            sut.GetCurrentWeapon().Should().BeEquivalentTo(nameof(Fists));
         }
 
         [Fact]
-        public void Fight_WithSword_ReturnsThreeDamage()
+        public void SetWeapon_WithSword_EquipsSword()
         {
             Character sut = new King(loggerMock.Object);
             sut.SetWeapon(new Sword());
 
-            var result = sut.Fight();
-
-            result.Should().Be(3);
+            sut.GetCurrentWeapon().Should().Be(nameof(Sword));
         }
 
         [Fact]
-        public void SetWeapon_WithNull_SetsFists()
+        public void SetWeapon_WithNull_EquipsFists()
         {
             Character sut = new King(loggerMock.Object);
             sut.SetWeapon(null);
 
+            sut.GetCurrentWeapon().Should().Be(nameof(Fists));
+        }
+
+        [Fact]
+        public void Fight_WithBowAndArrow_ReturnsTwoDamageAndEightRange()
+        {
+            Character sut = new King(loggerMock.Object);
+            sut.SetWeapon(new BowAndArrow());
+
             var result = sut.Fight();
 
-            result.Should().Be(1);
+            result.damage.Should().Be(2);
+            result.range.Should().Be(8);
+            sut.GetCurrentWeapon().Should().BeEquivalentTo(nameof(BowAndArrow));
         }
     }
 }
