@@ -12,7 +12,7 @@ namespace UnitTests
         Mock<ILogger<Character>> loggerMock = new Mock<ILogger<Character>>();
 
         [Fact]
-        public void King_Default_FightsWithFists()
+        public void King_FightsWithFists_ByDefault()
         {
             Character sut = new King(loggerMock.Object);
 
@@ -20,7 +20,7 @@ namespace UnitTests
         }
 
         [Fact]
-        public void Queen_Default_FightsWithFists()
+        public void Queen_FightsWithFists_ByDefault()
         {
             Character sut = new Queen(loggerMock.Object);
 
@@ -28,7 +28,7 @@ namespace UnitTests
         }
 
         [Fact]
-        public void Troll_Default_FightsWithFists()
+        public void Troll_FightsWithFists_ByDefault()
         {
             Character sut = new Troll(loggerMock.Object);
 
@@ -68,7 +68,7 @@ namespace UnitTests
         }
 
         [Fact]
-        public void Fight_WithBowAndArrow_ReturnsTwoDamageAndEightRange()
+        public void Fight_WithBowAndArrow_ReturnsExpectedDamageAndRange()
         {
             Character sut = new King(loggerMock.Object);
             sut.SetWeapon(new BowAndArrow());
