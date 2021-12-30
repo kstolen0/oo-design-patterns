@@ -24,7 +24,13 @@ namespace UnitTests
         {
             Character sut = new Queen(loggerMock.Object);
 
-            var result = sut.Fight();
+            sut.GetCurrentWeapon().Should().BeEquivalentTo(nameof(Fists));
+        }
+
+        [Fact]
+        public void Troll_Default_FightsWithFists()
+        {
+            Character sut = new Troll(loggerMock.Object);
 
             sut.GetCurrentWeapon().Should().BeEquivalentTo(nameof(Fists));
         }
