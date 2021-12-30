@@ -6,7 +6,7 @@
 
         public (int range, int damage) UseWeapon()
         {
-            return (8, 2);
+            return (8, 20);
         }
     }
 }

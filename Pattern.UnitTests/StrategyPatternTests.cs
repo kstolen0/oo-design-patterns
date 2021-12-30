@@ -61,7 +61,7 @@ namespace UnitTests
 
             var result = sut.Fight();
 
-            result.damage.Should().Be(2);
+            result.damage.Should().Be(20);
             result.range.Should().Be(8);
             sut.GetCurrentWeapon().Should().BeEquivalentTo(nameof(BowAndArrow));
         }

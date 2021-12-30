@@ -6,7 +6,7 @@
 
         (int range, int damage) IWeapon.UseWeapon()
         {
-            return (range: 1, damage: 1);
+            return (range: 1, damage: 10);
         }
     }
 }
