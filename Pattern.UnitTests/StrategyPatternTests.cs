@@ -11,15 +11,19 @@ namespace UnitTests
         Mock<ILogger<Character>> loggerMock = new Mock<ILogger<Character>>();
 
         [Fact]
-        public void CreateKing()
-        {
-            Character sut = new King(loggerMock.Object);
-        }
-
-        [Fact]
         public void King_UnarmedAttack_DealsOneDamage()
         {
             Character sut = new King(loggerMock.Object);
+
+            var result = sut.Fight();
+
+            result.Should().Be(1);
+        }
+
+        [Fact]
+        public void Queen_UnarmedAttack_DealsOneDamage()
+        {
+            Character sut = new Queen(loggerMock.Object);
 
             var result = sut.Fight();
 
