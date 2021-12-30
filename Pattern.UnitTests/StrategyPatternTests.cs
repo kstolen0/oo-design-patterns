@@ -36,6 +36,20 @@ namespace UnitTests
         }
 
         [Fact]
+        public void Troll_IsStrongerThanHuman()
+        {
+            Character human = new King(loggerMock.Object);
+            Character troll = new Troll(loggerMock.Object);
+            human.SetWeapon(new Fists());
+            troll.SetWeapon(new Fists());
+
+            var trollDamage = troll.Fight().damage;
+            var humanDamage = human.Fight().damage;
+
+            trollDamage.Should().BeGreaterThan(humanDamage);
+        }
+
+        [Fact]
         public void SetWeapon_WithSword_EquipsSword()
         {
             Character sut = new King(loggerMock.Object);

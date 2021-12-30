@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using StrategyPattern.Weapons;
+using System;
 
 namespace StrategyPattern.Characters
 {
@@ -8,6 +9,8 @@ namespace StrategyPattern.Characters
         private IWeapon _weapon;
 
         private ILogger<Character> _logger;
+        protected double _damageModifier = 1.0;
+
         protected Character(ILogger<Character> logger, IWeapon weapon)
         {
             _logger = logger;
@@ -17,7 +20,9 @@ namespace StrategyPattern.Characters
         public (int range, int damage) Fight()
         {
             _logger.LogInformation("fighting");
-            return _weapon.UseWeapon();
+            var attack = _weapon.UseWeapon();
+
+            return (attack.range, (int)Math.Floor(attack.damage * _damageModifier));
         }
 
         public void SetWeapon(IWeapon weapon)
