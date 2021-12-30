@@ -36,6 +36,14 @@ namespace UnitTests
         }
 
         [Fact]
+        public void Knight_FightsWithSword_ByDefault()
+        {
+            Character sut = new Knight(loggerMock.Object);
+
+            sut.GetCurrentWeapon().Should().BeEquivalentTo(nameof(Sword));
+        }
+
+        [Fact]
         public void Troll_IsStrongerThanHuman()
         {
             Character human = new King(loggerMock.Object);
