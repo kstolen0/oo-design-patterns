@@ -29,6 +29,7 @@ namespace Patterns.ObserverPattern
         public void SetValue(int value)
         {
             _value = value;
+            NotifyObservers();
         }
 
         public int GetValue()

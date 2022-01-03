@@ -33,7 +33,6 @@ namespace UnitTests
             var valueBeforeUpdate = observer.GetValue();
 
             sut.SetValue(valueBeforeUpdate + 1);
-            sut.NotifyObservers();
 
             observer.GetValue().Should().BeGreaterThan(valueBeforeUpdate);
         }
@@ -47,11 +46,9 @@ namespace UnitTests
             sut.RegisterObserver(observerToKeep);
             sut.RegisterObserver(observerToRemove);
             sut.SetValue(sut.GetValue() + 1);
-            sut.NotifyObservers();
 
             sut.RemoveObserver(observerToRemove);
             sut.SetValue(sut.GetValue() + 1);
-            sut.NotifyObservers();
 
             observerToKeep.GetValue().Should().BeGreaterThan(observerToRemove.GetValue());
         }
