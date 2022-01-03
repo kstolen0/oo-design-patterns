@@ -22,7 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DecoratorPatttern\DecoratorPattern.csproj" />
     <ProjectReference Include="..\StrategyPattern\Patterns.csproj" />
   </ItemGroup>
 
