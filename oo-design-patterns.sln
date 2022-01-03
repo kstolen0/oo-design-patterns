@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DecoratorPattern", "Decorat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "Pattern.UnitTests\UnitTests.csproj", "{8813DC64-3A24-4550-AC53-2B6A4B34707A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StrategyPattern", "StrategyPattern\StrategyPattern.csproj", "{4231103B-A650-4BE9-B1E4-F962566E5667}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Patterns", "StrategyPattern\Patterns.csproj", "{4231103B-A650-4BE9-B1E4-F962566E5667}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
