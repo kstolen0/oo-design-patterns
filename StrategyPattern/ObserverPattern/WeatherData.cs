@@ -30,5 +30,15 @@ namespace Patterns.ObserverPattern
         {
             _value = value;
         }
+
+        public int GetValue()
+        {
+            return _value;
+        }
+
+        public void RemoveObserver(IObserver observer)
+        {
+            _observers.Remove(observer);
+        }
     }
 }
