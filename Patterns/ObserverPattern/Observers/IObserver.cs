@@ -2,6 +2,8 @@
 {
     public interface IObserver
     {
-        public void Update(int value);
+        public ISubject Subject { get; }
+
+        public void Update();
     }
 }

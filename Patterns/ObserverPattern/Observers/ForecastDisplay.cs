@@ -4,14 +4,22 @@
     {
         int _value;
 
+        public ISubject Subject { get; }
+
+        public ForecastDisplay(ISubject subject)
+        {
+            Subject = subject;
+        }
+
         public int GetValue()
         {
             return _value;
         }
 
-        public void Update(int value)
+        public void Update()
         {
-            _value = value;
+            _value = Subject.GetValue();
+
         }
     }
 }

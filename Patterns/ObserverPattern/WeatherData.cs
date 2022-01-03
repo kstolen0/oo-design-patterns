@@ -17,7 +17,7 @@ namespace Patterns.ObserverPattern
         {
             foreach (IObserver observer in _observers)
             {
-                observer.Update(_value);
+                observer.Update();
             }
         }
 

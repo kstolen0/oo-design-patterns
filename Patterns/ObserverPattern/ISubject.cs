@@ -9,5 +9,7 @@ namespace Patterns.ObserverPattern
         public void RemoveObserver(IObserver observer);
 
         public void NotifyObservers();
+
+        public int GetValue();
     }
 }

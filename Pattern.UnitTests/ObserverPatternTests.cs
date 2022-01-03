@@ -11,7 +11,7 @@ namespace UnitTests
         public void SubjectCanRegisterObservers()
         {
             ISubject sut = new WeatherData();
-            IObserver observer = new ForecastDisplay();
+            IObserver observer = new ForecastDisplay(sut);
             sut.RegisterObserver(observer);
         }
 
@@ -19,7 +19,7 @@ namespace UnitTests
         public void SubjectCanRemoveObservers()
         {
             ISubject sut = new WeatherData();
-            IObserver observer = new ForecastDisplay();
+            IObserver observer = new ForecastDisplay(sut);
             sut.RegisterObserver(observer);
             sut.RemoveObserver(observer);
         }
@@ -28,7 +28,7 @@ namespace UnitTests
         public void Subject_WhenChanges_NotifiesRegisteredObservers()
         {
             WeatherData sut = new WeatherData();
-            ForecastDisplay observer = new ForecastDisplay();
+            ForecastDisplay observer = new ForecastDisplay(sut);
             sut.RegisterObserver(observer);
             var valueBeforeUpdate = observer.GetValue();
 
@@ -42,8 +42,8 @@ namespace UnitTests
         public void WhenObserverIsRemovedFromSubject_ObserverIsNotNotified()
         {
             WeatherData sut = new WeatherData();
-            ForecastDisplay observerToKeep = new ForecastDisplay();
-            ForecastDisplay observerToRemove = new ForecastDisplay();
+            ForecastDisplay observerToKeep = new ForecastDisplay(sut);
+            ForecastDisplay observerToRemove = new ForecastDisplay(sut);
             sut.RegisterObserver(observerToKeep);
             sut.RegisterObserver(observerToRemove);
             sut.SetValue(sut.GetValue() + 1);
