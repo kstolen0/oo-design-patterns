@@ -1,4 +1,5 @@
 ﻿using Patterns.DecoratorPattern.Beverages;
+using Patterns.DecoratorPattern.Condiments;
 using Xunit;
 
 namespace UnitTests
@@ -17,6 +18,13 @@ namespace UnitTests
             IBeverage sut = new DarkRoast();
 
             sut.Cost();
+        }
+
+        [Fact]
+        public void AddSoyToDarkRoast()
+        {
+            IBeverage sut = new DarkRoast();
+            sut = new Soy(sut);
         }
     }
 }

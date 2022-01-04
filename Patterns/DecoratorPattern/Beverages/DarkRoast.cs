@@ -4,7 +4,7 @@
     {
         public long Cost()
         {
-            return (long)0.5;
+            return (long)4.0;
         }
     }
 }
