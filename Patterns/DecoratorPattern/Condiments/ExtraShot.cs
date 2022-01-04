@@ -2,15 +2,16 @@
 
 namespace Patterns.DecoratorPattern.Condiments
 {
-    public class Soy : Condiment
+    public class ExtraShot : Condiment
     {
-        public Soy(Beverage beverage) : base(beverage)
+
+        public ExtraShot(Beverage beverage) : base(beverage)
         {
         }
 
         public override long Cost()
         {
-            return _beverage.Cost() + (long)0.5;
+            return _beverage.Cost() + (long)1.0;
         }
     }
 }

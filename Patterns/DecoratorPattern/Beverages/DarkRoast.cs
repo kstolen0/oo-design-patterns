@@ -1,8 +1,8 @@
 ﻿namespace Patterns.DecoratorPattern.Beverages
 {
-    public class DarkRoast : IBeverage
+    public class DarkRoast : Beverage
     {
-        public long Cost()
+        public override long Cost()
         {
             return (long)4.0;
         }
