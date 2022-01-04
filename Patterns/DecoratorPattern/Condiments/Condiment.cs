@@ -2,7 +2,7 @@
 
 namespace Patterns.DecoratorPattern.Condiments
 {
-    public class Condiment : Beverage
+    public abstract class Condiment : Beverage
     {
         protected Beverage _beverage;
 
@@ -11,9 +11,16 @@ namespace Patterns.DecoratorPattern.Condiments
             _beverage = beverage;
         }
 
-        public override long Cost()
+        public abstract override double Cost();
+
+        public override void SetSize(Size size)
         {
-            throw new System.NotImplementedException();
+            _beverage.SetSize(size);
+        }
+
+        public override Size GetSize()
+        {
+            return _beverage.GetSize();
         }
     }
 }

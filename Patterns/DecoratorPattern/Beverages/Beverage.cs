@@ -5,14 +5,14 @@
         public enum Size { SMALL, MEDIUM, LARGE };
         protected Size _size;
 
-        public abstract long Cost();
+        public abstract double Cost();
 
-        public void SetSize(Size size)
+        public virtual void SetSize(Size size)
         {
             _size = size;
         }
 
-        public Size GetSize()
+        public virtual Size GetSize()
         {
             return _size;
         }

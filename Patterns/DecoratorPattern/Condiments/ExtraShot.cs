@@ -9,9 +9,9 @@ namespace Patterns.DecoratorPattern.Condiments
         {
         }
 
-        public override long Cost()
+        public override double Cost()
         {
-            return _beverage.Cost() + (long)1.0;
+            return _beverage.Cost() + 1.0;
         }
     }
 }

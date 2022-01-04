@@ -2,7 +2,7 @@
 {
     public class DarkRoast : Beverage
     {
-        public override long Cost()
+        public override double Cost()
         {
             return (long)4.0;
         }
