@@ -10,5 +10,13 @@ namespace UnitTests
         {
             IBeverage sut = new DarkRoast();
         }
+
+        [Fact]
+        public void GetDarkRoastCost()
+        {
+            IBeverage sut = new DarkRoast();
+
+            sut.Cost();
+        }
     }
 }
