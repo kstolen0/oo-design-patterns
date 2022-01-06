@@ -2,11 +2,6 @@
 {
     public class NewYorkStylePepperoni : IPepperoni
     {
-        public string Description { get; }
-
-        public NewYorkStylePepperoni()
-        {
-            Description = "NY style pepperoni";
-        }
+        public string Description => "NY style pepperoni";
     }
 }

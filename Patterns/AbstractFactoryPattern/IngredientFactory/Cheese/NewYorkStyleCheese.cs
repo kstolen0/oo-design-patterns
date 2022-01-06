@@ -2,12 +2,6 @@
 {
     public class NewYorkStyleCheese : ICheese
     {
-        public string Description { get; }
-
-        public NewYorkStyleCheese()
-        {
-            Description = "NY style cheese";
-        }
-
+        public string Description => "NY style cheese";
     }
 }
