@@ -12,15 +12,15 @@ namespace UnitTests
         [Fact]
         public void CreatePizzaStore()
         {
-            IPizzaStore sut = new NewYorkPizzaStore();
+            PizzaStore sut = new NewYorkPizzaStore();
         }
 
         [Fact]
         public void OrderCheesePizza()
         {
-            IPizzaStore sut = new NewYorkPizzaStore();
+            PizzaStore sut = new NewYorkPizzaStore();
 
-            var result = sut.OrderPizza("Cheese");
+            var result = sut.OrderPizza(PizzaStore.Menu.Cheese);
 
             result.GetType().Should().Be(typeof(CheesePizza));
         }
@@ -28,9 +28,9 @@ namespace UnitTests
         [Fact]
         public void OrderPepperoniPizza()
         {
-            IPizzaStore sut = new NewYorkPizzaStore();
+            PizzaStore sut = new NewYorkPizzaStore();
 
-            var result = sut.OrderPizza("Pepperoni");
+            var result = sut.OrderPizza(PizzaStore.Menu.Pepperoni);
 
             result.GetType().Should().Be(typeof(PepperoniPizza));
         }
@@ -38,9 +38,9 @@ namespace UnitTests
         [Fact]
         public void NYCheesePizzaHasNYToppings()
         {
-            IPizzaStore sut = new NewYorkPizzaStore();
+            PizzaStore sut = new NewYorkPizzaStore();
 
-            IPizza result = sut.OrderPizza("Cheese");
+            IPizza result = sut.OrderPizza(PizzaStore.Menu.Cheese);
 
             result.Cheese.Description.Should().BeEquivalentTo("NY style cheese");
             result.Cheese.Should().BeOfType<NewYorkStyleCheese>();
@@ -49,9 +49,9 @@ namespace UnitTests
         [Fact]
         public void NYPepperoniPizzaHasNYToppings()
         {
-            IPizzaStore sut = new NewYorkPizzaStore();
+            PizzaStore sut = new NewYorkPizzaStore();
 
-            IPizza result = sut.OrderPizza("Pepperoni");
+            IPizza result = sut.OrderPizza(PizzaStore.Menu.Pepperoni);
 
             result.Cheese.Should().BeOfType<NewYorkStyleCheese>();
             result.Pepperoni.Should().BeOfType<NewYorkStylePepperoni>();
