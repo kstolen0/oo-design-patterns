@@ -42,7 +42,6 @@ namespace UnitTests
 
             IPizza result = sut.OrderPizza(PizzaStore.Menu.Cheese);
 
-            result.Cheese.Description.Should().BeEquivalentTo("NY style cheese");
             result.Cheese.Should().BeOfType<NewYorkStyleCheese>();
         }
 
@@ -55,6 +54,22 @@ namespace UnitTests
 
             result.Cheese.Should().BeOfType<NewYorkStyleCheese>();
             result.Pepperoni.Should().BeOfType<NewYorkStylePepperoni>();
+        }
+
+        [Fact]
+        public void CreateChicagoPizza()
+        {
+            PizzaStore sut = new ChicagoPizzaStore();
+        }
+
+        [Fact]
+        public void ChicagoCheesePizzaHasChicagoToppings()
+        {
+            PizzaStore sut = new ChicagoPizzaStore();
+
+            IPizza result = sut.OrderPizza(PizzaStore.Menu.Cheese);
+
+            result.Cheese.Should().BeOfType<ChicagoStyleCheese>();
         }
     }
 }
