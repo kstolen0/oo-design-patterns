@@ -1,6 +1,7 @@
 ﻿using FluentAssertions;
 using Patterns.AbstractFactoryPattern.IngredientFactory.Cheese;
 using Patterns.AbstractFactoryPattern.IngredientFactory.Pepperoni;
+using Patterns.AbstractFactoryPattern.IngredientFactory.Sauce;
 using Patterns.AbstractFactoryPattern.Pizzas;
 using Patterns.AbstractFactoryPattern.PizzaStores;
 using Xunit;
@@ -43,6 +44,7 @@ namespace UnitTests
             IPizza result = sut.OrderPizza(PizzaStore.Menu.Cheese);
 
             result.Cheese.Should().BeOfType<NewYorkStyleCheese>();
+            result.Sauce.Should().BeOfType<NewYorkStyleSauce>();
         }
 
         [Fact]
@@ -70,6 +72,7 @@ namespace UnitTests
             IPizza result = sut.OrderPizza(PizzaStore.Menu.Cheese);
 
             result.Cheese.Should().BeOfType<ChicagoStyleCheese>();
+            result.Sauce.Should().BeOfType<ChicagoStyleSauce>();
         }
 
         [Fact]
