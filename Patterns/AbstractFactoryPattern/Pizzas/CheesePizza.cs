@@ -1,4 +1,5 @@
-﻿using Patterns.AbstractFactoryPattern.IngredientFactory.Cheese;
+﻿using Patterns.AbstractFactoryPattern.IngredientFactory;
+using Patterns.AbstractFactoryPattern.IngredientFactory.Cheese;
 
 namespace Patterns.AbstractFactoryPattern.Pizzas
 {
@@ -6,9 +7,9 @@ namespace Patterns.AbstractFactoryPattern.Pizzas
     {
         public ICheese Cheese { get; }
 
-        public CheesePizza(ICheese cheese)
+        public CheesePizza(IIngredientFactory ingredients)
         {
-            Cheese = cheese;
+            Cheese = ingredients.CreateCheese();
         }
     }
 }

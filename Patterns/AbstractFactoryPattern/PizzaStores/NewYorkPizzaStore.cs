@@ -1,4 +1,4 @@
-﻿using Patterns.AbstractFactoryPattern.IngredientFactory.Cheese;
+﻿using Patterns.AbstractFactoryPattern.IngredientFactory;
 using Patterns.AbstractFactoryPattern.Pizzas;
 
 namespace Patterns.AbstractFactoryPattern.PizzaStores
@@ -7,7 +7,9 @@ namespace Patterns.AbstractFactoryPattern.PizzaStores
     {
         public IPizza OrderPizza(string type)
         {
-            return new CheesePizza(new NewYorkStyleCheese());
+            IIngredientFactory ingredientFactory = new NewYorkIngredientFactory();
+
+            return new CheesePizza(ingredientFactory);
         }
     }
 }
