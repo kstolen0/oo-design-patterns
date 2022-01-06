@@ -71,5 +71,16 @@ namespace UnitTests
 
             result.Cheese.Should().BeOfType<ChicagoStyleCheese>();
         }
+
+        [Fact]
+        public void ChicagoPepperoniPizzaHasChicagoToppings()
+        {
+            PizzaStore sut = new ChicagoPizzaStore();
+
+            IPizza result = sut.OrderPizza(PizzaStore.Menu.Pepperoni);
+
+            result.Cheese.Should().BeOfType<ChicagoStyleCheese>();
+            result.Pepperoni.Should().BeOfType<ChicagoStylePepperoni>();
+        }
     }
 }
