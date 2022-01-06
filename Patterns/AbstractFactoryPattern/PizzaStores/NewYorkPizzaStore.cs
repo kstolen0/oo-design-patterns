@@ -1,5 +1,6 @@
 ﻿using Patterns.AbstractFactoryPattern.IngredientFactory;
 using Patterns.AbstractFactoryPattern.Pizzas;
+using System;
 
 namespace Patterns.AbstractFactoryPattern.PizzaStores
 {
@@ -9,7 +10,15 @@ namespace Patterns.AbstractFactoryPattern.PizzaStores
         {
             IIngredientFactory ingredientFactory = new NewYorkIngredientFactory();
 
-            return new CheesePizza(ingredientFactory);
+            switch (type)
+            {
+                case "Cheese":
+                    return new CheesePizza(ingredientFactory);
+                case "Pepperoni":
+                    return new PepperoniPizza(ingredientFactory);
+                default:
+                    throw new ArgumentException("Invalid argument", nameof(type));
+            }
         }
     }
 }

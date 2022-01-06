@@ -4,15 +4,16 @@ using Patterns.AbstractFactoryPattern.IngredientFactory.Pepperoni;
 
 namespace Patterns.AbstractFactoryPattern.Pizzas
 {
-    public class CheesePizza : IPizza
+    public class PepperoniPizza : IPizza
     {
         public ICheese Cheese { get; }
 
         public IPepperoni Pepperoni { get; }
 
-        public CheesePizza(IIngredientFactory ingredients)
+        public PepperoniPizza(IIngredientFactory ingredientFactory)
         {
-            Cheese = ingredients.CreateCheese();
+            Cheese = ingredientFactory.CreateCheese();
+            Pepperoni = ingredientFactory.CreatePepperoni();
         }
     }
 }
