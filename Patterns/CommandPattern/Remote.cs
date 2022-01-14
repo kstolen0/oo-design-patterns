@@ -16,6 +16,16 @@ namespace Patterns.CommandPattern
                 Commands[i] = noCommand;
             }
         }
+
+        public void SetCommand(int index, ICommand command)
+        {
+            Commands[index] = command;
+        }
+
+        public void PushButton(int index)
+        {
+            Commands[index].Execute();
+        }
     }
 }
 
