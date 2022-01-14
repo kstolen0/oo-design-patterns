@@ -19,11 +19,13 @@ namespace Patterns.CommandPattern
 
         public void SetCommand(int index, ICommand command)
         {
+            // add error handling
             Commands[index] = command;
         }
 
         public void PushButton(int index)
         {
+            // add error handling
             Commands[index].Execute();
         }
     }
