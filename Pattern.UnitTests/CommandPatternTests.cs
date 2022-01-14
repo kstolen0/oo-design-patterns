@@ -80,5 +80,44 @@ namespace UnitTests
 
             kitchenLights.IsLightOn().Should().Be(previousLightState);
         }
+
+        [Fact]
+        public void PushButton_WithMacroCommand_DoesManyThings()
+        {
+            var remote = new Remote();
+            var kitchenLights = new KitchenLights();
+            var kettle = new Kettle();
+            var previousLightState = kitchenLights.IsLightOn();
+            var macroCommand = new MacroCommand(new ICommand[2] {
+                new ToggleLightCommand(kitchenLights),
+                new BoilKettleCommand(kettle)
+            });
+            remote.SetCommand(0, macroCommand);
+
+            remote.PushButton(0);
+
+            kitchenLights.IsLightOn().Should().Be(!previousLightState);
+            kettle.IsWaterBoiled().Should().BeTrue();
+        }
+
+        [Fact]
+        public void UndoLastCommand_UndoesMacroCommand()
+        {
+            var remote = new Remote();
+            var kitchenLights = new KitchenLights();
+            var kettle = new Kettle();
+            var previousLightState = kitchenLights.IsLightOn();
+            var macroCommand = new MacroCommand(new ICommand[2] {
+                new ToggleLightCommand(kitchenLights),
+                new BoilKettleCommand(kettle)
+            });
+            remote.SetCommand(0, macroCommand);
+            remote.PushButton(0);
+
+            remote.UndoLastCommand();
+
+            kitchenLights.IsLightOn().Should().Be(previousLightState);
+            kettle.IsWaterBoiled().Should().BeFalse();
+        }
     }
 }
