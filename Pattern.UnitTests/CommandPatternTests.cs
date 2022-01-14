@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using Patterns.CommandPattern;
+using Patterns.CommandPattern.Appliances;
 using Patterns.CommandPattern.Commands;
 using Patterns.CommandPattern.Lights;
 using Xunit;
@@ -40,6 +41,18 @@ namespace UnitTests
             remote.PushButton(0);
 
             kitchenLights.IsLightOn().Should().Be(!previousLightState);
+        }
+
+        [Fact]
+        public void PushButton_TurnsOnTheKettle()
+        {
+            var remote = new Remote();
+            var kettle = new Kettle();
+            remote.SetCommand(0, new BoilKettleCommand(kettle));
+
+            remote.PushButton(0);
+
+            kettle.IsWaterBoiled().Should().BeTrue();
         }
     }
 }
