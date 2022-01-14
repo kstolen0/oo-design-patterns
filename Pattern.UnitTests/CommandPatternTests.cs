@@ -56,7 +56,7 @@ namespace UnitTests
         }
 
         [Fact]
-        public void PushButton_SetsUndoCommand()
+        public void PushButton_AddCommandToUndoLastCommand()
         {
             var remote = new Remote();
             remote.SetCommand(0, new BoilKettleCommand());
@@ -64,7 +64,7 @@ namespace UnitTests
 
             remote.PushButton(0);
 
-            remote.UndoCommand.Should().BeOfType<BoilKettleCommand>();
+            remote.UndoCommand.Pop().Should().BeOfType<BoilKettleCommand>();
         }
 
         [Fact]
@@ -118,6 +118,24 @@ namespace UnitTests
 
             kitchenLights.IsLightOn().Should().Be(previousLightState);
             kettle.IsWaterBoiled().Should().BeFalse();
+        }
+
+        [Fact]
+        public void UndoLastCommand_CanUndoMultipleCommands()
+        {
+            var remote = new Remote();
+            var kitchenLights = new KitchenLights();
+            var kettle = new Kettle();
+            remote.SetCommand(0, new BoilKettleCommand(kettle));
+            remote.SetCommand(1, new ToggleLightCommand(kitchenLights));
+            remote.PushButton(0);
+            remote.PushButton(1);
+
+            remote.UndoLastCommand();
+            remote.UndoLastCommand();
+
+            kettle.IsWaterBoiled().Should().BeFalse();
+            kitchenLights.IsLightOn().Should().BeFalse();
         }
     }
 }
