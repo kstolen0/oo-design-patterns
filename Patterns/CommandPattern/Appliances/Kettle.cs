@@ -14,6 +14,11 @@
             _isWaterBoiled = true;
         }
 
+        public void StopBoiling()
+        {
+            _isWaterBoiled = false;
+        }
+
         public bool IsWaterBoiled()
         {
             return _isWaterBoiled;

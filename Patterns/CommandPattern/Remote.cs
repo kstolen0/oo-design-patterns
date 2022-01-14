@@ -5,6 +5,7 @@ namespace Patterns.CommandPattern
     public class Remote
     {
         public ICommand[] Commands { get; set; }
+        public ICommand UndoCommand;
 
         public Remote()
         {
@@ -15,6 +16,8 @@ namespace Patterns.CommandPattern
             {
                 Commands[i] = noCommand;
             }
+
+            UndoCommand = noCommand;
         }
 
         public void SetCommand(int index, ICommand command)
@@ -27,6 +30,12 @@ namespace Patterns.CommandPattern
         {
             // add error handling
             Commands[index].Execute();
+            UndoCommand = Commands[index];
+        }
+
+        public void UndoLastCommand()
+        {
+            UndoCommand.Undo();
         }
     }
 }

@@ -16,7 +16,7 @@ namespace UnitTests
 
             foreach (ICommand c in remote.Commands)
             {
-                c.GetType().Should().Be<NoCommand>();
+                c.Should().BeOfType<NoCommand>();
             }
         }
 
@@ -27,7 +27,7 @@ namespace UnitTests
 
             remote.SetCommand(0, new ToggleLightCommand(new KitchenLights()));
 
-            remote.Commands[0].GetType().Should().Be<ToggleLightCommand>();
+            remote.Commands[0].Should().BeOfType<ToggleLightCommand>();
         }
 
         [Fact]
@@ -53,6 +53,32 @@ namespace UnitTests
             remote.PushButton(0);
 
             kettle.IsWaterBoiled().Should().BeTrue();
+        }
+
+        [Fact]
+        public void PushButton_SetsUndoCommand()
+        {
+            var remote = new Remote();
+            remote.SetCommand(0, new BoilKettleCommand());
+            remote.SetCommand(1, new ToggleLightCommand(new KitchenLights()));
+
+            remote.PushButton(0);
+
+            remote.UndoCommand.Should().BeOfType<BoilKettleCommand>();
+        }
+
+        [Fact]
+        public void UndoLastCommand_UndoesTheLastCommand()
+        {
+            var remote = new Remote();
+            var kitchenLights = new KitchenLights();
+            var previousLightState = kitchenLights.IsLightOn();
+            remote.SetCommand(0, new ToggleLightCommand(kitchenLights));
+            remote.PushButton(0);
+
+            remote.UndoLastCommand();
+
+            kitchenLights.IsLightOn().Should().Be(previousLightState);
         }
     }
 }

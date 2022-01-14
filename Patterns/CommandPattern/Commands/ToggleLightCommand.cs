@@ -15,5 +15,10 @@ namespace Patterns.CommandPattern.Commands
         {
             _light.ToggleLights();
         }
+
+        public void Undo()
+        {
+            _light.ToggleLights();
+        }
     }
 }

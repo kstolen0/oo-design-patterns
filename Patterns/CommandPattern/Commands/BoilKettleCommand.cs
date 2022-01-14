@@ -21,5 +21,10 @@ namespace Patterns.CommandPattern.Commands
         {
             _kettle.Boil();
         }
+
+        public void Undo()
+        {
+            _kettle.StopBoiling();
+        }
     }
 }
