@@ -47,6 +47,18 @@ namespace UnitTests
 
             sut.Count().Should().BeGreaterThan(0);
         }
+
+        [Fact]
+        public void CanConcatenateAndEnumerateThroughBothMenus()
+        {
+            var breakfastMenu = new BreakfastMenu();
+            var lunchMenu = new LunchMenu();
+
+            var bothMenus = breakfastMenu.Concat(lunchMenu);
+
+            EnumerateThroughMenu(bothMenus);
+
+            bothMenus.Count().Should().Be(breakfastMenu.Count() + lunchMenu.Count());
         }
 
         private void EnumerateThroughMenu(IEnumerable<MenuItem> menu)
