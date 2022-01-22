@@ -10,6 +10,7 @@ namespace Patterns.IteratorPattern
         public LunchMenu()
         {
             Menu = new List<MenuItem>();
+            Menu.Add(new MenuItem { Name = "test", Description = "description" });
         }
 
         public IEnumerator<MenuItem> GetEnumerator()

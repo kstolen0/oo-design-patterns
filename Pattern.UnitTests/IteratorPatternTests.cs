@@ -1,6 +1,7 @@
 ﻿using FluentAssertions;
 using Patterns.IteratorPattern;
 using System.Collections.Generic;
+using System.Linq;
 using Xunit;
 
 namespace UnitTests
@@ -23,6 +24,8 @@ namespace UnitTests
             var sut = new BreakfastMenu();
 
             EnumerateThroughMenu(sut);
+
+            sut.Count().Should().BeGreaterThan(0);
         }
 
         [Fact]
@@ -41,6 +44,9 @@ namespace UnitTests
             var sut = new LunchMenu();
 
             EnumerateThroughMenu(sut);
+
+            sut.Count().Should().BeGreaterThan(0);
+        }
         }
 
         private void EnumerateThroughMenu(IEnumerable<MenuItem> menu)
