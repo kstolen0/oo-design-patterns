@@ -32,5 +32,38 @@ namespace UnitTests.StatePatternTests
 
             state.Should().BeOfType<NoCoinState>();
         }
+
+        [Fact]
+        public void InsertCoin_SetsStateToHasCoin_WhenInNoCoinState()
+        {
+            var sut = new GumBallMachine(1);
+
+            sut.InsertCoin();
+
+            sut.GetCurrentState().Should().BeOfType<HasCoinState>();
+        }
+
+        [Fact]
+        public void InsertCoin_DoesNothing_WhenInNoGumBallsState()
+        {
+            var sut = new GumBallMachine();
+
+            sut.InsertCoin();
+
+            sut.GetCurrentState().Should().BeOfType<NoGumBallState>();
+        }
+
+        [Fact]
+        public void InsertCoin_DoesNothing_WhenInHasCoinState()
+        {
+            var sut = new GumBallMachine(1);
+
+            sut.InsertCoin();
+            var prevState = sut.GetCurrentState();
+            sut.InsertCoin();
+
+            sut.GetCurrentState().GetType().Should().Be(prevState.GetType());
+            sut.GetCurrentState().Should().BeOfType<HasCoinState>();
+        }
     }
 }

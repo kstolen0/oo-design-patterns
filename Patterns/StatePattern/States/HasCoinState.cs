@@ -2,5 +2,8 @@
 {
     public class HasCoinState : IState
     {
+        public void InsertCoin()
+        {
+        }
     }
 }
