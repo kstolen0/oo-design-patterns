@@ -65,5 +65,16 @@ namespace UnitTests.StatePatternTests
             sut.GetCurrentState().GetType().Should().Be(prevState.GetType());
             sut.GetCurrentState().Should().BeOfType<HasCoinState>();
         }
+
+        //[Fact]
+        //public void TurnCrank_DispensesGumBall_WhenInHasCoinState()
+        //{
+        //    var sut = new GumBallMachine(1);
+        //    sut.InsertCoin();
+        //    var prevGumBallCount = sut.GetGumBallCount();
+        //    sut.TurnCrank();
+
+        //    sut.GetGumBallCount().Should().Be(prevGumBallCount - 1);
+        //}
     }
 }

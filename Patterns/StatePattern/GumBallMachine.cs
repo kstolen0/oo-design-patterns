@@ -9,6 +9,8 @@ namespace Patterns.StatePattern
         private IState _noCoinState;
         private IState _currentState;
 
+        private int _gumBallCount;
+
         public GumBallMachine() : this(0)
         {
             _currentState = _noGumBallState;
@@ -25,6 +27,8 @@ namespace Patterns.StatePattern
             {
                 _currentState = GetNoCoinState();
             }
+
+            _gumBallCount = gumballs;
         }
 
         public IState GetCurrentState()
@@ -57,5 +61,14 @@ namespace Patterns.StatePattern
             _currentState.InsertCoin();
         }
 
+        public void TurnCrank()
+        {
+
+        }
+
+        public int GetGumBallCount()
+        {
+            return _gumBallCount;
+        }
     }
 }
