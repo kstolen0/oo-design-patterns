@@ -10,7 +10,7 @@ namespace UnitTests.StatePatternTests.StateClassTests
         [Fact]
         public void Dispense_ReleasesGumBallFromMachine()
         {
-            var gumBallMachine = new GumBallMachine(1);
+            var gumBallMachine = new InternalGumBallMachine(1);
             var gumBallCount = gumBallMachine.GetGumBallCount();
             var sut = new GumBallSoldState(gumBallMachine);
 
@@ -22,7 +22,7 @@ namespace UnitTests.StatePatternTests.StateClassTests
         [Fact]
         public void Dispense_SetsMachineStateToNoGumBalls_WhenNoGumBallsAreLeftAfterDisposal()
         {
-            var gumBallMachine = new GumBallMachine(1);
+            var gumBallMachine = new InternalGumBallMachine(1);
             var sut = new GumBallSoldState(gumBallMachine);
 
             sut.Dispense();
@@ -33,7 +33,7 @@ namespace UnitTests.StatePatternTests.StateClassTests
         [Fact]
         public void Dispense_SetsMachineStateToNoCoin_WhenGumBallsAreLeftAfterDisposal()
         {
-            var gumBallMachine = new GumBallMachine(2);
+            var gumBallMachine = new InternalGumBallMachine(2);
             var sut = new GumBallSoldState(gumBallMachine);
 
             sut.Dispense();
@@ -44,7 +44,7 @@ namespace UnitTests.StatePatternTests.StateClassTests
         [Fact]
         public void TurnCrank_DoesNothing()
         {
-            var gumBallMachine = new GumBallMachine(1);
+            var gumBallMachine = new InternalGumBallMachine(1);
             var gumBallCount = gumBallMachine.GetGumBallCount();
             var prevState = gumBallMachine.GetCurrentState();
             var sut = new GumBallSoldState(gumBallMachine);
@@ -58,7 +58,7 @@ namespace UnitTests.StatePatternTests.StateClassTests
         [Fact]
         public void InsertCoin_DoesNothing()
         {
-            var gumBallMachine = new GumBallMachine(1);
+            var gumBallMachine = new InternalGumBallMachine(1);
             var gumBallCount = gumBallMachine.GetGumBallCount();
             var prevState = gumBallMachine.GetCurrentState();
             var sut = new GumBallSoldState(gumBallMachine);
@@ -72,7 +72,7 @@ namespace UnitTests.StatePatternTests.StateClassTests
         [Fact]
         public void Refill_DoesNothing()
         {
-            var gumBallMachine = new GumBallMachine(1);
+            var gumBallMachine = new InternalGumBallMachine(1);
             var gumBallCount = gumBallMachine.GetGumBallCount();
             var prevState = gumBallMachine.GetCurrentState();
             var sut = new GumBallSoldState(gumBallMachine);

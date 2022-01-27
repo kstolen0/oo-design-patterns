@@ -2,9 +2,9 @@
 {
     public class NoGumBallState : State
     {
-        GumBallMachine _machine;
+        InternalGumBallMachine _machine;
 
-        public NoGumBallState(GumBallMachine machine)
+        public NoGumBallState(InternalGumBallMachine machine)
         {
             _machine = machine;
         }

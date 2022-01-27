@@ -2,8 +2,8 @@
 {
     public class HasCoinState : State
     {
-        GumBallMachine _machine;
-        public HasCoinState(GumBallMachine machine)
+        InternalGumBallMachine _machine;
+        public HasCoinState(InternalGumBallMachine machine)
         {
             _machine = machine;
         }

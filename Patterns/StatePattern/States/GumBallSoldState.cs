@@ -2,8 +2,8 @@
 {
     public class GumBallSoldState : State
     {
-        GumBallMachine _machine;
-        public GumBallSoldState(GumBallMachine machine)
+        InternalGumBallMachine _machine;
+        public GumBallSoldState(InternalGumBallMachine machine)
         {
             _machine = machine;
         }

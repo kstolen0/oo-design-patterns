@@ -2,7 +2,7 @@
 
 namespace Patterns.StatePattern
 {
-    public class GumBallMachine
+    public class InternalGumBallMachine
     {
         private IState _hasCoinState;
         private IState _noGumBallState;
@@ -12,12 +12,12 @@ namespace Patterns.StatePattern
 
         private int _gumBallCount;
 
-        public GumBallMachine() : this(0)
+        public InternalGumBallMachine() : this(0)
         {
             _currentState = _noGumBallState;
         }
 
-        public GumBallMachine(int gumballs)
+        public InternalGumBallMachine(int gumballs)
         {
             _hasCoinState = new HasCoinState(this);
             _noGumBallState = new NoGumBallState(this);

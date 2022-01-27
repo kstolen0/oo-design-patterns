@@ -10,7 +10,7 @@ namespace UnitTests.StatePatternTests
         [Fact]
         public void GumBallMachine_DefaultConstructor_SetsStateToNoGumBalls()
         {
-            var sut = new GumBallMachine();
+            var sut = new InternalGumBallMachine();
 
             IState state = sut.GetCurrentState();
 
@@ -20,7 +20,7 @@ namespace UnitTests.StatePatternTests
         [Fact]
         public void GumBallMachine_ConstructWithGumBalls_SetsStateToNoCoin()
         {
-            var sut = new GumBallMachine(1);
+            var sut = new InternalGumBallMachine(1);
 
             IState state = sut.GetCurrentState();
 
@@ -30,7 +30,7 @@ namespace UnitTests.StatePatternTests
         [Fact]
         public void InsertCoin_SetsStateToHasCoin_WhenInNoCoinState()
         {
-            var sut = new GumBallMachine(1);
+            var sut = new InternalGumBallMachine(1);
 
             sut.InsertCoin();
 
@@ -40,7 +40,7 @@ namespace UnitTests.StatePatternTests
         [Fact]
         public void TurnCrank_DispensesGumBall_WhenInHasCoinState()
         {
-            var sut = new GumBallMachine(1);
+            var sut = new InternalGumBallMachine(1);
             var prevGumBallCount = sut.GetGumBallCount();
             sut.InsertCoin();
 
@@ -52,7 +52,7 @@ namespace UnitTests.StatePatternTests
         [Fact]
         public void TurnCrank_SetsStateToNoCoinState_WhenAtLeastOneGumBallIsLeftAfterDisposal()
         {
-            var sut = new GumBallMachine(2);
+            var sut = new InternalGumBallMachine(2);
             sut.InsertCoin();
 
             sut.TurnCrank();
@@ -63,7 +63,7 @@ namespace UnitTests.StatePatternTests
         [Fact]
         public void TurnCrank_SetsStateToNoGumBallState_WhenNoGumBallsAreLeftAfterDisposal()
         {
-            var sut = new GumBallMachine(1);
+            var sut = new InternalGumBallMachine(1);
             sut.InsertCoin();
 
             sut.TurnCrank();
@@ -74,7 +74,7 @@ namespace UnitTests.StatePatternTests
         [Fact]
         public void Refill_AddsGumBalls_WhenNoGumBallsAreLeftInMachine()
         {
-            var sut = new GumBallMachine();
+            var sut = new InternalGumBallMachine();
 
             sut.Refill(1);
 

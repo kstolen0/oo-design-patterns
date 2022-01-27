@@ -10,7 +10,7 @@ namespace UnitTests.StatePatternTests.StateClassTests
         [Fact]
         public void InsertCoin_SetsGumBallMachineStateToHasCoinState()
         {
-            var gumballmachine = new GumBallMachine();
+            var gumballmachine = new InternalGumBallMachine();
             var sut = new NoCoinState(gumballmachine);
 
             sut.InsertCoin();
@@ -21,7 +21,7 @@ namespace UnitTests.StatePatternTests.StateClassTests
         [Fact]
         public void TurnCrank_DoesNothing()
         {
-            var gumBallMachine = new GumBallMachine(1);
+            var gumBallMachine = new InternalGumBallMachine(1);
             var gumballCount = gumBallMachine.GetGumBallCount();
             var prevState = gumBallMachine.GetCurrentState();
             var sut = new NoCoinState(gumBallMachine);
@@ -35,7 +35,7 @@ namespace UnitTests.StatePatternTests.StateClassTests
         [Fact]
         public void Dispense_DoesNothing()
         {
-            var gumBallMachine = new GumBallMachine(1);
+            var gumBallMachine = new InternalGumBallMachine(1);
             var gumBallCount = gumBallMachine.GetGumBallCount();
             var prevState = gumBallMachine.GetCurrentState();
             var sut = new NoCoinState(gumBallMachine);
@@ -48,7 +48,7 @@ namespace UnitTests.StatePatternTests.StateClassTests
         [Fact]
         public void Refill_DoesNothing()
         {
-            var gumBallMachine = new GumBallMachine(1);
+            var gumBallMachine = new InternalGumBallMachine(1);
             var gumBallCount = gumBallMachine.GetGumBallCount();
             var prevState = gumBallMachine.GetCurrentState();
             var sut = new NoCoinState(gumBallMachine);
