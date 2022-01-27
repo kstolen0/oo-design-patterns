@@ -9,5 +9,7 @@
         void Dispense();
 
         void Refill(int gumBalls);
+
+        bool ReturnCoin();
     }
 }

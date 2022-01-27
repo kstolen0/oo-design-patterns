@@ -22,6 +22,30 @@ namespace UnitTests.StatePatternTests.StateClassTests
         }
 
         [Fact]
+        public void ReturnCoin_ReturnsTrue()
+        {
+            var gumBallMachine = new InternalGumBallMachine(1);
+            var sut = new HasCoinState(gumBallMachine);
+            gumBallMachine.InsertCoin();
+
+            var result = sut.ReturnCoin();
+
+            result.Should().BeTrue();
+        }
+
+        [Fact]
+        public void ReturnCoin_SetsMachineStateToNoCoin()
+        {
+            var gumBallMachine = new InternalGumBallMachine(1);
+            var sut = new HasCoinState(gumBallMachine);
+            gumBallMachine.InsertCoin();
+
+            sut.ReturnCoin();
+
+            gumBallMachine.GetCurrentState().Should().BeOfType<NoCoinState>();
+        }
+
+        [Fact]
         public void InsertCoin_DoesNothing()
         {
             var gumBallMachine = new InternalGumBallMachine(1);

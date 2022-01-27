@@ -12,6 +12,11 @@
         {
         }
 
+        public virtual bool ReturnCoin()
+        {
+            return false;
+        }
+
         public virtual bool TurnCrank()
         {
             return false;

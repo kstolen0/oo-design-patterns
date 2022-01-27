@@ -69,6 +69,11 @@ namespace Patterns.StatePattern
             _gumBallCount += gumBalls;
         }
 
+        public bool ReturnCoin()
+        {
+            return _currentState.ReturnCoin();
+        }
+
         #region STATE MANAGEMENT 
 
         public void SetState(IState state)

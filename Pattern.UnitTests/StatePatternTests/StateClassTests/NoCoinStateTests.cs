@@ -34,6 +34,17 @@ namespace UnitTests.StatePatternTests.StateClassTests
         }
 
         [Fact]
+        public void ReturnCoin_ReturnsFalse()
+        {
+            var gumBallMachine = new InternalGumBallMachine(1);
+            var sut = new NoCoinState(gumBallMachine);
+
+            var result = sut.ReturnCoin();
+
+            result.Should().BeFalse();
+        }
+
+        [Fact]
         public void Dispense_DoesNothing()
         {
             var gumBallMachine = new InternalGumBallMachine(1);

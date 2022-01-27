@@ -22,6 +22,11 @@
             _machine.Refill(gumBalls);
         }
 
+        public bool ReturnCoin()
+        {
+            return _machine.ReturnCoin();
+        }
+
         public bool TurnCrank()
         {
             return _machine.TurnCrank();

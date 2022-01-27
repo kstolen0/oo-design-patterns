@@ -17,5 +17,11 @@ namespace Patterns.StatePattern.States
             _machine.Dispense();
             return true;
         }
+
+        public override bool ReturnCoin()
+        {
+            _machine.SetState(_machine.GetNoCoinState());
+            return true;
+        }
     }
 }

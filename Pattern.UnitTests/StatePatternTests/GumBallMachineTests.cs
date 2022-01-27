@@ -75,5 +75,38 @@ namespace UnitTests.StatePatternTests
 
             result.Should().BeFalse();
         }
+
+        [Fact]
+        public void ReturnCoin_ReturnsTrue_WhenCoinHasBeenInserted()
+        {
+            IGumBallMachine sut = new GumBallMachine(1);
+            sut.InsertCoin();
+
+            var result = sut.ReturnCoin();
+
+            result.Should().BeTrue();
+        }
+
+        [Fact]
+        public void ReturnCoin_ReturnsFalse_WhenCoinHasNotBeenInserted()
+        {
+            IGumBallMachine sut = new GumBallMachine(1);
+
+            var result = sut.ReturnCoin();
+
+            result.Should().BeFalse();
+        }
+
+        [Fact]
+        public void ReturnCoin_ReturnsFalse_AfterCrankHasBeenTurned()
+        {
+            IGumBallMachine sut = new GumBallMachine(1);
+            sut.InsertCoin();
+            sut.TurnCrank();
+
+            var result = sut.ReturnCoin();
+
+            result.Should().BeFalse();
+        }
     }
 }
