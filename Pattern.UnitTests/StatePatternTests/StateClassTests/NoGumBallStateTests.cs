@@ -20,6 +20,18 @@ namespace UnitTests.StatePatternTests.StateClassTests
         }
 
         [Fact]
+        public void Refill_DoesNothing_WhenInputLessThanOne()
+        {
+            var gumBallMachine = new InternalGumBallMachine();
+            var sut = new NoGumBallState(gumBallMachine);
+
+            sut.Refill(-5);
+
+            gumBallMachine.GetGumBallCount().Should().Be(0);
+            gumBallMachine.GetCurrentState().Should().BeOfType<NoGumBallState>();
+        }
+
+        [Fact]
         public void Dispense_DoesNothing()
         {
             var gumBallMachine = new InternalGumBallMachine(1);

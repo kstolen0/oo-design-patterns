@@ -61,7 +61,7 @@ namespace Patterns.StatePattern
 
         public void Refill(int gumBalls)
         {
-            _currentState.Refill(1);
+            _currentState.Refill(gumBalls);
         }
 
         public void AddGumBalls(int gumBalls)

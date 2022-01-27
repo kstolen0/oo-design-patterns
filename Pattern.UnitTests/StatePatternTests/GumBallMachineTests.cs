@@ -63,5 +63,17 @@ namespace UnitTests.StatePatternTests
 
             result.Should().BeTrue();
         }
+
+        [Fact]
+        public void Refill_RemainsEmpty_WhenAddingNegativeNumber()
+        {
+            IGumBallMachine sut = new GumBallMachine();
+
+            sut.Refill(-5);
+            sut.InsertCoin();
+            var result = sut.TurnCrank();
+
+            result.Should().BeFalse();
+        }
     }
 }

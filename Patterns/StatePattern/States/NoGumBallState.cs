@@ -14,8 +14,11 @@ namespace Patterns.StatePattern.States
 
         public override void Refill(int gumBalls)
         {
-            _machine.AddGumBalls(gumBalls);
-            _machine.SetState(_machine.GetNoCoinState());
+            if (gumBalls > 0)
+            {
+                _machine.AddGumBalls(gumBalls);
+                _machine.SetState(_machine.GetNoCoinState());
+            }
         }
     }
 }
