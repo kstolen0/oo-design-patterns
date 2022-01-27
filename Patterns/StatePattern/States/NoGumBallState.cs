@@ -1,6 +1,9 @@
-﻿namespace Patterns.StatePattern.States
+﻿using System.Runtime.CompilerServices;
+
+[assembly: InternalsVisibleTo("UnitTests")]
+namespace Patterns.StatePattern.States
 {
-    public class NoGumBallState : State
+    internal class NoGumBallState : State
     {
         InternalGumBallMachine _machine;
 

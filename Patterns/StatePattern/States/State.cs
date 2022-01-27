@@ -12,7 +12,9 @@
         {
         }
 
-        public virtual void TurnCrank()
-        { }
+        public virtual bool TurnCrank()
+        {
+            return false;
+        }
     }
 }

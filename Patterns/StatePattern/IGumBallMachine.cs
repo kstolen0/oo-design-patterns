@@ -1,13 +1,9 @@
-﻿namespace Patterns.StatePattern.States
+﻿namespace Patterns.StatePattern
 {
-    public interface IState
+    public interface IGumBallMachine
     {
         void InsertCoin();
-
         bool TurnCrank();
-
-        void Dispense();
-
         void Refill(int gumBalls);
     }
 }

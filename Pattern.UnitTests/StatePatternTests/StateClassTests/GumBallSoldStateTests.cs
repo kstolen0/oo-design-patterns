@@ -42,15 +42,16 @@ namespace UnitTests.StatePatternTests.StateClassTests
         }
 
         [Fact]
-        public void TurnCrank_DoesNothing()
+        public void TurnCrank_ReturnsFalse()
         {
             var gumBallMachine = new InternalGumBallMachine(1);
             var gumBallCount = gumBallMachine.GetGumBallCount();
             var prevState = gumBallMachine.GetCurrentState();
             var sut = new GumBallSoldState(gumBallMachine);
 
-            sut.TurnCrank();
+            var hasGumBall = sut.TurnCrank();
 
+            hasGumBall.Should().BeFalse();
             gumBallMachine.GetGumBallCount().Should().Be(gumBallCount);
             gumBallMachine.GetCurrentState().GetType().Should().Be(prevState.GetType());
         }

@@ -14,8 +14,9 @@ namespace UnitTests.StatePatternTests.StateClassTests
             var gumBallCount = gumBallMachine.GetGumBallCount();
             var sut = new HasCoinState(gumBallMachine);
 
-            sut.TurnCrank();
+            var hasGumBall = sut.TurnCrank();
 
+            hasGumBall.Should().BeTrue();
             gumBallMachine.GetGumBallCount().Should().Be(gumBallCount - 1);
             gumBallMachine.GetCurrentState().Should().BeOfType<NoGumBallState>();
         }

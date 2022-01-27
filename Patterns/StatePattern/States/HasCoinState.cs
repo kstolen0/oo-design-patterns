@@ -1,6 +1,9 @@
-﻿namespace Patterns.StatePattern.States
+﻿using System.Runtime.CompilerServices;
+
+[assembly: InternalsVisibleTo("UnitTests")]
+namespace Patterns.StatePattern.States
 {
-    public class HasCoinState : State
+    internal class HasCoinState : State
     {
         InternalGumBallMachine _machine;
         public HasCoinState(InternalGumBallMachine machine)
@@ -8,10 +11,11 @@
             _machine = machine;
         }
 
-        public override void TurnCrank()
+        public override bool TurnCrank()
         {
             _machine.SetState(_machine.GetGumballSoldState());
             _machine.Dispense();
+            return true;
         }
     }
 }

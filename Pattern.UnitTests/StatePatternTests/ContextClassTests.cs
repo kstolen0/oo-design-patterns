@@ -44,8 +44,9 @@ namespace UnitTests.StatePatternTests
             var prevGumBallCount = sut.GetGumBallCount();
             sut.InsertCoin();
 
-            sut.TurnCrank();
+            var hasGumBall = sut.TurnCrank();
 
+            hasGumBall.Should().BeTrue();
             sut.GetGumBallCount().Should().Be(prevGumBallCount - 1);
         }
 
