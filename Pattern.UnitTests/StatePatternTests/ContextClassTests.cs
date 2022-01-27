@@ -8,12 +8,6 @@ namespace UnitTests.StatePatternTests
     public class ContextClassTests
     {
         [Fact]
-        public void CreateGumBallMachine()
-        {
-            var sut = new GumBallMachine();
-        }
-
-        [Fact]
         public void GumBallMachine_DefaultConstructor_SetsStateToNoGumBalls()
         {
             var sut = new GumBallMachine();
@@ -44,37 +38,37 @@ namespace UnitTests.StatePatternTests
         }
 
         [Fact]
-        public void InsertCoin_DoesNothing_WhenInNoGumBallsState()
+        public void TurnCrank_DispensesGumBall_WhenInHasCoinState()
         {
-            var sut = new GumBallMachine();
-
+            var sut = new GumBallMachine(1);
+            var prevGumBallCount = sut.GetGumBallCount();
             sut.InsertCoin();
 
-            sut.GetCurrentState().Should().BeOfType<NoGumBallState>();
+            sut.TurnCrank();
+
+            sut.GetGumBallCount().Should().Be(prevGumBallCount - 1);
         }
 
         [Fact]
-        public void InsertCoin_DoesNothing_WhenInHasCoinState()
+        public void TurnCrank_SetsStateToNoCoinState_WhenAtLeastOneGumBallIsLeftAfterDisposal()
         {
-            var sut = new GumBallMachine(1);
-
-            sut.InsertCoin();
-            var prevState = sut.GetCurrentState();
+            var sut = new GumBallMachine(2);
             sut.InsertCoin();
 
-            sut.GetCurrentState().GetType().Should().Be(prevState.GetType());
-            sut.GetCurrentState().Should().BeOfType<HasCoinState>();
+            sut.TurnCrank();
+
+            sut.GetCurrentState().Should().BeOfType<NoCoinState>();
         }
 
-        //[Fact]
-        //public void TurnCrank_DispensesGumBall_WhenInHasCoinState()
-        //{
-        //    var sut = new GumBallMachine(1);
-        //    sut.InsertCoin();
-        //    var prevGumBallCount = sut.GetGumBallCount();
-        //    sut.TurnCrank();
+        [Fact]
+        public void TurnCrank_SetsStateToNoGumBallState_WhenNoGumBallsAreLeftAfterDisposal()
+        {
+            var sut = new GumBallMachine(1);
+            sut.InsertCoin();
 
-        //    sut.GetGumBallCount().Should().Be(prevGumBallCount - 1);
-        //}
+            sut.TurnCrank();
+
+            sut.GetCurrentState().Should().BeOfType<NoGumBallState>();
+        }
     }
 }

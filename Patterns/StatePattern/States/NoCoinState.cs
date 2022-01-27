@@ -9,9 +9,17 @@
             _gumBallMachine = machine;
         }
 
+        public void Dispense()
+        {
+        }
+
         public void InsertCoin()
         {
             _gumBallMachine.SetState(_gumBallMachine.GetHasCoinState());
+        }
+
+        public void TurnCrank()
+        {
         }
     }
 }

@@ -5,30 +5,32 @@ using Xunit;
 
 namespace UnitTests.StatePatternTests.StateClassTests
 {
-    public class NoCoinStateTests
+    public class HasCoinStateTests
     {
         [Fact]
-        public void InsertCoin_SetsGumBallMachineStateToHasCoinState()
-        {
-            var gumballmachine = new GumBallMachine();
-            var sut = new NoCoinState(gumballmachine);
-
-            sut.InsertCoin();
-
-            gumballmachine.GetCurrentState().Should().BeOfType<HasCoinState>();
-        }
-
-        [Fact]
-        public void TurnCrank_DoesNothing()
+        public void TurnCrank_UpdatesMachineState_AndDispensesGumBall()
         {
             var gumBallMachine = new GumBallMachine(1);
-            var gumballCount = gumBallMachine.GetGumBallCount();
-            var prevState = gumBallMachine.GetCurrentState();
-            var sut = new NoCoinState(gumBallMachine);
+            var gumBallCount = gumBallMachine.GetGumBallCount();
+            var sut = new HasCoinState(gumBallMachine);
 
             sut.TurnCrank();
 
-            gumBallMachine.GetGumBallCount().Should().Be(gumballCount);
+            gumBallMachine.GetGumBallCount().Should().Be(gumBallCount - 1);
+            gumBallMachine.GetCurrentState().Should().BeOfType<NoGumBallState>();
+        }
+
+        [Fact]
+        public void InsertCoin_DoesNothing()
+        {
+            var gumBallMachine = new GumBallMachine(1);
+            var gumBallCount = gumBallMachine.GetGumBallCount();
+            var prevState = gumBallMachine.GetCurrentState();
+            var sut = new HasCoinState(gumBallMachine);
+
+            sut.InsertCoin();
+
+            gumBallMachine.GetGumBallCount().Should().Be(gumBallCount);
             gumBallMachine.GetCurrentState().GetType().Should().Be(prevState.GetType());
         }
 
@@ -38,7 +40,7 @@ namespace UnitTests.StatePatternTests.StateClassTests
             var gumBallMachine = new GumBallMachine(1);
             var gumBallCount = gumBallMachine.GetGumBallCount();
             var prevState = gumBallMachine.GetCurrentState();
-            var sut = new NoCoinState(gumBallMachine);
+            var sut = new HasCoinState(gumBallMachine);
 
             sut.Dispense();
 

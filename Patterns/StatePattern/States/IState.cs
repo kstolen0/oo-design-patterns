@@ -3,5 +3,9 @@
     public interface IState
     {
         void InsertCoin();
+
+        void TurnCrank();
+
+        void Dispense();
     }
 }
