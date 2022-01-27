@@ -7,5 +7,7 @@
         void TurnCrank();
 
         void Dispense();
+
+        void Refill(int gumBalls);
     }
 }

@@ -70,5 +70,16 @@ namespace UnitTests.StatePatternTests
 
             sut.GetCurrentState().Should().BeOfType<NoGumBallState>();
         }
+
+        [Fact]
+        public void Refill_AddsGumBalls_WhenNoGumBallsAreLeftInMachine()
+        {
+            var sut = new GumBallMachine();
+
+            sut.Refill(1);
+
+            sut.GetGumBallCount().Should().Be(1);
+            sut.GetCurrentState().Should().BeOfType<NoCoinState>();
+        }
     }
 }

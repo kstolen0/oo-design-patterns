@@ -8,6 +8,18 @@ namespace UnitTests.StatePatternTests.StateClassTests
     public class NoGumBallStateTests
     {
         [Fact]
+        public void Refill_AddsGumballsToGumBallMachine()
+        {
+            var gumBallMachine = new GumBallMachine();
+            var sut = new NoGumBallState(gumBallMachine);
+
+            sut.Refill(2);
+
+            gumBallMachine.GetGumBallCount().Should().Be(2);
+            gumBallMachine.GetCurrentState().Should().BeOfType<NoCoinState>();
+        }
+
+        [Fact]
         public void Dispense_DoesNothing()
         {
             var gumBallMachine = new GumBallMachine(1);

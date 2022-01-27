@@ -8,6 +8,10 @@
         public virtual void InsertCoin()
         { }
 
+        public virtual void Refill(int gumBalls)
+        {
+        }
+
         public virtual void TurnCrank()
         { }
     }

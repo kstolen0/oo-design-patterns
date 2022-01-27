@@ -32,6 +32,47 @@ namespace Patterns.StatePattern
 
             _gumBallCount = gumballs;
         }
+        public void InsertCoin()
+        {
+            _currentState.InsertCoin();
+        }
+
+        public void TurnCrank()
+        {
+            _currentState.TurnCrank();
+        }
+
+        public void Dispense()
+        {
+            _currentState.Dispense();
+        }
+
+        public int GetGumBallCount()
+        {
+            return _gumBallCount;
+        }
+
+        public void ReleaseBall()
+        {
+            _gumBallCount--;
+        }
+
+        public void Refill(int gumBalls)
+        {
+            _currentState.Refill(1);
+        }
+
+        public void AddGumBalls(int gumBalls)
+        {
+            _gumBallCount += gumBalls;
+        }
+
+        #region STATE MANAGEMENT 
+
+        public void SetState(IState state)
+        {
+            _currentState = state;
+        }
 
         public IState GetCurrentState()
         {
@@ -58,34 +99,6 @@ namespace Patterns.StatePattern
             return _gumBallSoldState;
         }
 
-        public void SetState(IState state)
-        {
-            _currentState = state;
-        }
-
-        public void InsertCoin()
-        {
-            _currentState.InsertCoin();
-        }
-
-        public void TurnCrank()
-        {
-            _currentState.TurnCrank();
-        }
-
-        public void Dispense()
-        {
-            _currentState.Dispense();
-        }
-
-        public int GetGumBallCount()
-        {
-            return _gumBallCount;
-        }
-
-        public void ReleaseBall()
-        {
-            _gumBallCount--;
-        }
+        #endregion
     }
 }

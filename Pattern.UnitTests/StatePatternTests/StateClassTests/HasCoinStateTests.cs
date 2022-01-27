@@ -47,5 +47,19 @@ namespace UnitTests.StatePatternTests.StateClassTests
             gumBallMachine.GetGumBallCount().Should().Be(gumBallCount);
             gumBallMachine.GetCurrentState().GetType().Should().Be(prevState.GetType());
         }
+
+        [Fact]
+        public void Refill_DoesNothing()
+        {
+            var gumBallMachine = new GumBallMachine(1);
+            var gumBallCount = gumBallMachine.GetGumBallCount();
+            var prevState = gumBallMachine.GetCurrentState();
+            var sut = new HasCoinState(gumBallMachine);
+
+            sut.Refill(1);
+
+            gumBallMachine.GetGumBallCount().Should().Be(gumBallCount);
+            gumBallMachine.GetCurrentState().GetType().Should().Be(prevState.GetType());
+        }
     }
 }
