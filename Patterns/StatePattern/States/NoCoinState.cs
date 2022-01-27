@@ -1,6 +1,6 @@
 ﻿namespace Patterns.StatePattern.States
 {
-    public class NoCoinState : IState
+    public class NoCoinState : State
     {
         private GumBallMachine _gumBallMachine;
 
@@ -9,17 +9,9 @@
             _gumBallMachine = machine;
         }
 
-        public void Dispense()
-        {
-        }
-
-        public void InsertCoin()
+        public override void InsertCoin()
         {
             _gumBallMachine.SetState(_gumBallMachine.GetHasCoinState());
-        }
-
-        public void TurnCrank()
-        {
         }
     }
 }

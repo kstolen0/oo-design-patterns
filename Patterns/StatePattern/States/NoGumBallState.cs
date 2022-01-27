@@ -1,21 +1,8 @@
 ﻿namespace Patterns.StatePattern.States
 {
-    public class NoGumBallState : IState
+    public class NoGumBallState : State
     {
         public NoGumBallState(GumBallMachine machine)
-        {
-
-        }
-
-        public void Dispense()
-        {
-        }
-
-        public void InsertCoin()
-        {
-        }
-
-        public void TurnCrank()
         {
         }
     }
